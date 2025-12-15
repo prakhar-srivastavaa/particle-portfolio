@@ -7,6 +7,12 @@ const contacts = [
     icon: "✉️",
   },
   {
+    label: "Phone",
+    value: "+91 9199899761",
+    href: "tel:+919199899761",
+    icon: "📞",
+  },
+  {
     label: "GitHub",
     value: "prakhar-srivastavaa",
     href: "https://github.com/prakhar-srivastavaa",
