@@ -1,3 +1,58 @@
+# Prakhar Srivastava - Portfolio
+
+A modern, interactive portfolio built with Next.js, TypeScript, GSAP animations, and custom particle effects.
+
+## 🌐 Live Demo
+
+**[View Live Portfolio →](https://prakhar-portfolio-pied.vercel.app/)**
+
+## ✨ Features
+
+- Interactive custom cursor with particle trails
+- Smooth GSAP animations and transitions
+- Responsive design with Tailwind CSS
+- Contact form integration
+- Project showcase and skills section
+
+## 🚀 Tech Stack
+
+- **Framework:** Next.js 15
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Animations:** GSAP
+- **Deployment:** Vercel
+
+## 🛠️ Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## 📦 Build
+
+```bash
+npm run build
+npm start
+```
+
+## 📧 Contact
+
+- **Email:** prakharsrivastava@gmail.com
+- **LinkedIn:** [prakhar-srivastavaa](https://linkedin.com/in/prakhar-srivastavaa)
+- **GitHub:** [prakhar-srivastavaa](https://github.com/prakhar-srivastavaa)
+
+---
+
+Made with ❤️ by Prakhar Srivastava
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
