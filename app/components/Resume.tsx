@@ -1,16 +1,19 @@
 // Resume.tsx
 export default function Resume() {
   return (
-    <section className="max-w-2xl mx-auto py-10">
-      <h2 className="text-2xl font-bold mb-4">Resume</h2>
-      <p>
-        <a href="/Prakhar_Srivastava_Resume.pdf" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-          Download my PDF Resume
-        </a>
+    <section className="rounded-3xl border border-white/10 bg-slate-900/30 p-10 shadow-2xl backdrop-blur-md">
+      <h2 className="text-3xl font-bold text-amber-100 mb-6">Resume</h2>
+      <p className="text-lg text-slate-200/90 mb-6">
+        For a detailed overview of my experience, education, and certifications, grab the PDF.
       </p>
-      <p className="mt-4">
-        For a detailed overview of my experience, education, and certifications, please download my resume.
-      </p>
+      <a
+        href="https://drive.google.com/file/d/1VmuH3PKU7IYjEJICYGzE85ORrArmSuHZ/view"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 rounded-full bg-amber-300 px-5 py-3 text-slate-900 font-semibold shadow-[0_10px_30px_rgba(251,191,36,0.35)] transition hover:shadow-[0_14px_36px_rgba(251,191,36,0.45)]"
+      >
+        View Resume
+      </a>
     </section>
   );
 }

@@ -1,31 +1,46 @@
 // Projects.tsx
+const projects = [
+  {
+    title: "GeekCode — Coding Practice Platform (2025)",
+    points: [
+      "Full-stack platform using Next.js, TypeScript, and Firebase.",
+      "Authentication, code editor, test case execution, and validation.",
+      "State management with Recoil, data persistence with Firestore.",
+    ],
+  },
+  {
+    title: "Anuvaad — English to Hinglish Translator (2024)",
+    points: [
+      "Transformer-based NLP model for translation.",
+      "Fine-tuned Llama 3 with PEFT, LoRA, and quantization.",
+      "Efficient fine-tuning and deployment with Unsloth.",
+    ],
+  },
+  {
+    title: "whatsNow! — WhatsApp Auto-Reply Script (2023)",
+    points: [
+      "Python automation using Selenium for WhatsApp inquiries.",
+      "Reduced manual response time by 60%.",
+      "Automated 95% of information delivery for 100+ students.",
+    ],
+  },
+];
+
 export default function Projects() {
   return (
-    <section className="max-w-2xl mx-auto py-10">
-      <h2 className="text-2xl font-bold mb-4">Projects</h2>
-      <div className="mb-6">
-        <h3 className="font-semibold">GeekCode — Coding Practice Platform (2025)</h3>
-        <ul className="list-disc ml-6">
-          <li>Full-stack platform using Next.js, TypeScript, and Firebase.</li>
-          <li>Authentication, code editor, test case execution, and validation.</li>
-          <li>State management with Recoil, data persistence with Firestore.</li>
-        </ul>
-      </div>
-      <div className="mb-6">
-        <h3 className="font-semibold">Anuvaad — English to Hinglish Translator (2024)</h3>
-        <ul className="list-disc ml-6">
-          <li>Transformer-based NLP model for translation.</li>
-          <li>Fine-tuned Llama 3 with PEFT, LoRA, and quantization.</li>
-          <li>Efficient fine-tuning and deployment with Unsloth.</li>
-        </ul>
-      </div>
-      <div>
-        <h3 className="font-semibold">whatsNow! — WhatsApp Auto-Reply Script (2023)</h3>
-        <ul className="list-disc ml-6">
-          <li>Python automation using Selenium for WhatsApp inquiries.</li>
-          <li>Reduced manual response time by 60%.</li>
-          <li>Automated 95% of information delivery for 100+ students.</li>
-        </ul>
+    <section className="rounded-3xl border border-white/10 bg-slate-900/30 p-10 shadow-2xl backdrop-blur-md">
+      <h2 className="text-3xl font-bold text-amber-100 mb-6">Projects</h2>
+      <div className="grid gap-6 md:grid-cols-2">
+        {projects.map((project) => (
+          <article key={project.title} className="rounded-2xl border border-white/10 bg-slate-900/40 p-6 shadow-lg">
+            <h3 className="text-xl font-semibold text-amber-200 mb-3">{project.title}</h3>
+            <ul className="list-disc space-y-2 pl-5 text-slate-200/90">
+              {project.points.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
     </section>
   );
