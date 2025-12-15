@@ -23,8 +23,8 @@ export default function Contact() {
   };
 
   return (
-    <section className="rounded-3xl border border-white/10 bg-slate-900/10 px-6 py-8 shadow-2xl backdrop-blur-sm flex justify-center">
-      <div className="w-full max-w-lg">
+    <section className="mx-auto w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-900/10 px-6 py-10 shadow-2xl backdrop-blur-sm">
+      <div className="w-full max-w-lg mx-auto">
         <h2 className="text-3xl font-bold text-amber-100 mb-6 text-center">Get In Touch</h2>
         {submitted ? (
           <div className="rounded-xl bg-green-500/20 border border-green-500/50 p-6 text-center">

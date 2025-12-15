@@ -1,8 +1,8 @@
 // Home.tsx
 export default function Home() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 p-10 shadow-2xl backdrop-blur-md">
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
+    <section className="mx-auto w-full max-w-6xl relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/30 px-6 py-10 shadow-2xl backdrop-blur-md">
+      <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12">
         <div className="flex-1 space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-1 text-sm text-amber-200">
             <span className="h-2 w-2 rounded-full bg-amber-300" />
@@ -14,6 +14,12 @@ export default function Home() {
           <p className="text-lg text-slate-200/80">
             Bangalore-based developer crafting performant products, automation, and ML-powered tools. I love shaping ideas into interactive experiences.
           </p>
+          <div className="grid gap-3 text-sm font-semibold text-slate-100/90 sm:grid-cols-2">
+            <span>FastAPI + Python backend</span>
+            <span>TypeScript + Next.js frontend</span>
+            <span>Agentic AI / GenAI workflows</span>
+            <span>Automation, data, and SQL</span>
+          </div>
           <div className="flex flex-wrap gap-4">
             <a
               href="mailto:emailprakharsrivastava@gmail.com"
@@ -41,7 +47,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex-1 flex items-center justify-center">
-          <div className="relative h-64 w-64 rounded-full border border-amber-200/30 bg-gradient-to-br from-slate-800 to-slate-900 shadow-[0_20px_60px_rgba(17,24,39,0.6)]">
+          <div className="relative h-72 w-72 rounded-full border border-amber-200/30 bg-gradient-to-br from-slate-800 to-slate-900 shadow-[0_25px_70px_rgba(17,24,39,0.6)] lg:h-80 lg:w-80">
             <div className="absolute inset-1 rounded-full border border-amber-300/30" />
             <img
               src="/pic.jpg"

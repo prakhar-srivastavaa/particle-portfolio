@@ -31,10 +31,10 @@ export default function About() {
     <section className="mx-auto w-full max-w-5xl rounded-3xl border border-white/10 bg-slate-900/30 px-6 py-10 shadow-2xl backdrop-blur-md">
       <h2 className="text-3xl font-bold text-amber-100 mb-6">About</h2>
       <p className="text-lg text-slate-200/90 leading-relaxed">
-        I’m Prakhar Srivastava, a Computer Science graduate from KIIT University. I enjoy building scalable web applications, automating workflows, and exploring machine learning. I have experience with modern frameworks like Next.js, React, and FastAPI, and I love solving problems on LeetCode.
+        I’m Prakhar Srivastava, a backend-leaning full-stack developer focused on FastAPI, SQL, Python, and TypeScript. I build responsive, scalable products with measurable impact—optimizing workflows for 100+ users through automation and shipping real-time platforms like GeekCode.
       </p>
       <p className="mt-4 text-lg text-slate-200/90 leading-relaxed">
-        I’m always eager to learn new technologies and contribute to impactful projects, blending performance, design, and automation.
+        My toolkit spans Python (FastAPI, Pandas, PyTorch), TypeScript (React, Next.js), and databases like MongoDB and Firebase. I care about performance, clean code, and UX, whether it’s an NLP translator, e-commerce build, or client-driven automation. Let’s connect if you need someone who delivers fast and precisely.
       </p>
       <div className="mt-8 pt-8 border-t border-white/10">
         <h3 className="text-xl font-semibold text-amber-200 mb-4">Connect With Me</h3>

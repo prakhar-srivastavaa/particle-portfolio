@@ -24,8 +24,11 @@ const skillGroups = [
 
 export default function Skills() {
   return (
-    <section className="rounded-3xl border border-white/10 bg-slate-900/30 p-10 shadow-2xl backdrop-blur-md">
+    <section className="mx-auto w-full max-w-6xl rounded-3xl border border-white/10 bg-slate-900/30 px-6 py-10 shadow-2xl backdrop-blur-md">
       <h2 className="text-3xl font-bold text-amber-100 mb-6">Skills</h2>
+      <p className="text-lg text-slate-200/90 mb-6">
+        I blend modern front-end frameworks, automation, and machine learning tools to ship polished, performance-driven experiences.
+      </p>
       <div className="space-y-5">
         {skillGroups.map((group) => (
           <div key={group.title}>

@@ -3,6 +3,13 @@ import Navbar from "./components/Navbar";
 import Particles from "./components/Particles";
 import Cursor from "./components/Cursor";
 
+export const metadata = {
+  title: "Prakhar Srivastava",
+  icons: {
+    icon: "/favicon.png",
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
