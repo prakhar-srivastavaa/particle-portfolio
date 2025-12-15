@@ -6,13 +6,13 @@ import gsap from "gsap";
 export default function Cursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const trailRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const trailCount = 12;
 
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor) return;
 
-    const trailCount = 12;
-    const trails = trailRefs.current.filter(Boolean);
+    const trails = trailRefs.current.filter((trail): trail is HTMLDivElement => trail !== null);
 
     const move = (e: MouseEvent) => {
       gsap.to(cursor, {
@@ -23,7 +23,6 @@ export default function Cursor() {
       });
 
       trails.forEach((trail, index) => {
-        if (!trail) return;
         const delay = (index + 1) * 0.025;
         const scale = 1 - (index * 0.08);
         
@@ -41,14 +40,14 @@ export default function Cursor() {
     const down = () => {
       gsap.to(cursor, { scale: 0.8, duration: 0.15, ease: "power2.out" });
       trails.forEach((trail) => {
-        if (trail) gsap.to(trail, { scale: 0.7, duration: 0.2, ease: "power2.out" });
+        gsap.to(trail, { scale: 0.7, duration: 0.2, ease: "power2.out" });
       });
     };
     
     const up = () => {
       gsap.to(cursor, { scale: 1, duration: 0.2, ease: "power2.out" });
       trails.forEach((trail) => {
-        if (trail) gsap.to(trail, { scale: 1, duration: 0.3, ease: "power2.out" });
+        gsap.to(trail, { scale: 1, duration: 0.3, ease: "power2.out" });
       });
     };
 
@@ -65,12 +64,13 @@ export default function Cursor() {
 
   return (
     <>
-      {/* Dragging trail particles */}
-      {[...Array(12)].map((_, i) => (
+      {[...Array(trailCount)].map((_, i) => (
         <div
           key={i}
-          ref={(el) => { trailRefs.current[i] = el; }}
-          aria-hidden
+          ref={(el) => {
+            trailRefs.current[i] = el;
+          }}
+          aria-hidden="true"
           className="pointer-events-none fixed left-0 top-0 z-[9998] h-4 w-4 -translate-x-1/2 -translate-y-1/2"
           style={{
             opacity: 1 - (i * 0.08),
@@ -84,13 +84,10 @@ export default function Cursor() {
           />
         </div>
       ))}
-          ref={(el) => {
-            trailRefs.current[i] = el;
-          }}
-      {/* Meteor core */}
+      
       <div
         ref={cursorRef}
-        aria-hidden
+        aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[9999] h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2"
       >
         <div className="h-full w-full rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.9),0_0_30px_rgba(255,255,255,0.5)]" />
