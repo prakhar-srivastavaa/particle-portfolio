@@ -1,8 +1,26 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ThanksForTreat() {
+  const router = useRouter();
+
+  const handleBack = () => {
+    if (typeof window !== "undefined") {
+      const referrer = document.referrer;
+      const sameSiteReferrer = referrer && referrer.startsWith(window.location.origin);
+
+      if (window.history.length > 1 && sameSiteReferrer) {
+        router.back();
+        return;
+      }
+    }
+
+    router.push("/");
+  };
+
   const handleDone = () => {
     alert("Thank you for the coffee! ☕");
   };
@@ -11,8 +29,16 @@ export default function ThanksForTreat() {
     <main className="relative min-h-screen text-slate-100 px-6 py-12 flex items-center justify-center">
       <section className="w-full max-w-3xl rounded-3xl border border-white/10 bg-slate-900/30 px-8 py-10 shadow-2xl backdrop-blur-md">
         <div className="flex flex-col gap-6">
+          <button
+        type="button"
+        onClick={handleBack}
+        className="absolute left-6 top-6 inline-flex items-center justify-center rounded-full bg-amber-200 hover:bg-amber-300 p-3 text-slate-900 font-semibold shadow-[0_10px_30px_rgba(251,191,36,0.35)] transition hover:shadow-[0_14px_36px_rgba(251,191,36,0.45)]"
+        aria-label="Go back"
+      >
+        <span aria-hidden>←</span>
+      </button>
           <header className="text-center space-y-2">
-            <p className="text-sm uppercase tracking-[0.2em] text-amber-200">Buy Me A Coffee</p>
+            <p className="text-sm uppercase tracking-[0.2em] text-amber-300">Buy Me A Coffee</p>
             <h1 className="text-3xl font-bold text-amber-100">Support Prakhar Srivastava</h1>
             <p className="text-slate-200/80">Scan or use the UPI ID below. Every coffee fuels more builds and experiments.</p>
           </header>
@@ -36,7 +62,7 @@ export default function ThanksForTreat() {
           <div className="flex items-center justify-center">
             <button
               onClick={handleDone}
-              className="rounded-full bg-amber-300 px-6 py-3 text-slate-900 font-semibold shadow-[0_10px_30px_rgba(251,191,36,0.35)] transition hover:shadow-[0_14px_36px_rgba(251,191,36,0.45)]"
+              className="rounded-full bg-amber-200 hover:bg-amber-300 px-6 py-3 text-slate-900 font-semibold shadow-[0_10px_30px_rgba(251,191,36,0.35)] transition hover:shadow-[0_14px_36px_rgba(251,191,36,0.45)]"
             >
               Done
             </button>

@@ -3,6 +3,19 @@
 
 import { useState } from "react";
 
+type EmailJSClient = {
+  send: (
+    serviceId: string,
+    templateId: string,
+    templateParams: Record<string, unknown>,
+    publicKey?: string
+  ) => Promise<{ status: number; text: string }>;
+};
+
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -10,6 +23,7 @@ export default function Contact() {
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -23,10 +37,32 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMessage("");
 
     try {
-      // Add your email service logic here (e.g., EmailJS, SendGrid)
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated delay
+      const emailClient: EmailJSClient | undefined =
+        typeof window !== "undefined" ? (window as typeof window & { emailjs?: EmailJSClient }).emailjs : undefined;
+
+      if (!emailClient) {
+        throw new Error("Email service not available. Please try again later.");
+      }
+
+      if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+        throw new Error("EmailJS is not configured. Update service and template IDs.");
+      }
+
+      await emailClient.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: "emailprakharsrivastava@gmail.com",
+          reply_to: formData.email,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
       
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
@@ -34,6 +70,11 @@ export default function Contact() {
       setTimeout(() => setStatus("idle"), 3000);
     } catch (error) {
       setStatus("error");
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage("Failed to send message. Please try again.");
+      }
       setTimeout(() => setStatus("idle"), 3000);
     }
   };
@@ -99,7 +140,7 @@ export default function Contact() {
 
         {status === "error" && (
           <div className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-center text-red-400">
-            Failed to send message. Please try again.
+            {errorMessage || "Failed to send message. Please try again."}
           </div>
         )}
       </div>
