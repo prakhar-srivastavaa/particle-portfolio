@@ -55,8 +55,9 @@ export default function Contact() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          //{{message,email,name,to_email,reply_to}}// in Emailjs template
+          name: formData.name,
+          email: formData.email,
           message: formData.message,
           to_email: "emailprakharsrivastava@gmail.com",
           reply_to: formData.email,
