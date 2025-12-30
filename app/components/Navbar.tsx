@@ -52,28 +52,51 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)} />
-          <div className="absolute left-0 top-0 bottom-0 w-64 bg-slate-950 border-r border-white/10 shadow-2xl">
-            <div className="flex items-center justify-between p-4 border-b border-white/10">
-              <span className="text-xl font-bold text-amber-300">Menu</span>
+        <div 
+          className="fixed inset-0 md:hidden"
+          style={{ zIndex: 99999 }}
+        >
+          {/* Full black background - completely solid */}
+          <div 
+            className="absolute inset-0"
+            style={{ backgroundColor: '#020617' }}
+            onClick={() => setIsMenuOpen(false)}
+          />
+          
+          {/* Menu Panel */}
+          <div 
+            className="relative h-full w-72 shadow-2xl"
+            style={{ backgroundColor: '#020617' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div 
+              className="flex items-center justify-between p-5 border-b border-amber-300/40"
+              style={{ backgroundColor: '#0f172a' }}
+            >
+              <span className="text-2xl font-bold text-amber-300">Menu</span>
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="text-slate-400 hover:text-white transition-colors"
+                className="p-2 text-slate-300 hover:text-white transition-colors rounded-lg hover:bg-slate-800"
                 aria-label="Close menu"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
-            <div className="flex flex-col gap-2 p-4">
+            
+            {/* Navigation Links */}
+            <div 
+              className="flex flex-col gap-1 p-4"
+              style={{ backgroundColor: '#020617' }}
+            >
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-lg font-semibold text-slate-200 hover:text-amber-300 transition-colors py-2 px-4 rounded-lg hover:bg-slate-900"
+                  className="text-xl font-semibold text-white py-4 px-5 rounded-xl transition-all hover:bg-slate-800 hover:text-amber-300"
                 >
                   {link.label}
                 </Link>
